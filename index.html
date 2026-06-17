@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cannon Lanford Property Management</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -36,12 +36,46 @@
       height: 68px;
       box-shadow: 0 2px 20px rgba(0,0,0,.25);
     }
+
+    /* Monogram logo */
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem; font-weight: 700;
-      color: var(--white); letter-spacing: .02em;
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none;
     }
-    .nav-logo span { color: var(--gold); }
+    .nav-logo-monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .nav-logo-divider {
+      width: 1px; height: 28px;
+      background: rgba(255,255,255,0.18);
+    }
+    .nav-logo-text {
+      display: flex; flex-direction: column; gap: 1px;
+    }
+    .nav-logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .nav-logo-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(201,151,58,0.65);
+      line-height: 1;
+    }
+
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       color: rgba(255,255,255,.75);
@@ -190,10 +224,35 @@
       background: #111C27;
       color: rgba(255,255,255,.4);
       text-align: center;
-      padding: 36px 80px;
+      padding: 48px 80px;
       font-size: .82rem;
     }
-    footer strong { color: rgba(255,255,255,.7); }
+
+    /* Footer monogram */
+    .footer-monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .footer-rule {
+      width: 40px; height: 1px;
+      background: rgba(201,151,58,0.35);
+      margin: 0 auto 16px;
+    }
+    footer p { margin-top: 6px; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -211,7 +270,14 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Cannon <span></span> Lanford</div>
+  <a class="nav-logo" href="#home">
+    <div class="nav-logo-monogram">C·L</div>
+    <div class="nav-logo-divider"></div>
+    <div class="nav-logo-text">
+      <div class="nav-logo-name">Cannon &amp; Lanford</div>
+      <div class="nav-logo-sub">Property Management</div>
+    </div>
+  </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
@@ -283,7 +349,7 @@
   <div>
     <div class="section-eyebrow">Who We Are</div>
     <h2 class="section-title">A family business built on trust.</h2>
-    <p class="section-sub">For over 15 years, Cannon &amp; Sons has managed residential properties with the kind of attention that only comes from treating every building like it's your own. We're not a faceless corporation — we're a team that knows every hallway, every unit, and every tenant by name.</p>
+    <p class="section-sub">For over 15 years, Cannon &amp; Lanford has managed residential properties with the kind of attention that only comes from treating every building like it's your own. We're not a faceless corporation — we're a team that knows every hallway, every unit, and every tenant by name.</p>
   </div>
   <div class="about-values">
     <div class="value-row">
@@ -319,8 +385,11 @@
 
 <!-- FOOTER -->
 <footer>
-  <p><strong>Cannon; Lanford Property Management</strong> &nbsp;·&nbsp; cannonandsons.com</p>
-  <p style="margin-top:8px;">© 2026 Cannon Lanford. All rights reserved.</p>
+  <div class="footer-monogram">C·L</div>
+  <div class="footer-name">Cannon &amp; Lanford</div>
+  <div class="footer-rule"></div>
+  <p>cannonandsons.com</p>
+  <p style="margin-top:8px;">© 2026 Cannon &amp; Lanford Property Management. All rights reserved.</p>
 </footer>
 
 </body>
