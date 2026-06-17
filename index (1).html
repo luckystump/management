@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cannon & Sons Property Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #1B2A3B;
+      --slate: #2E4057;
+      --gold:  #C9973A;
+      --cream: #F7F4EF;
+      --white: #FFFFFF;
+      --muted: #6B7A8D;
+      --light: #E8E3DA;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 68px;
+      box-shadow: 0 2px 20px rgba(0,0,0,.25);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--white); letter-spacing: .02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      font-size: .85rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 120px 80px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 48%; height: 100%;
+      background: linear-gradient(135deg, var(--slate) 0%, #1a3a5c 100%);
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    .hero-badge {
+      position: relative; z-index: 1;
+      display: inline-block;
+      background: rgba(201,151,58,.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      position: relative; z-index: 1;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      font-weight: 900; color: var(--white);
+      line-height: 1.1; max-width: 620px;
+      margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero p {
+      position: relative; z-index: 1;
+      color: rgba(255,255,255,.65);
+      font-size: 1.1rem; max-width: 480px;
+    }
+    .hero-stats {
+      position: relative; z-index: 1;
+      display: flex; gap: 48px;
+      margin-top: 72px; padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 700;
+      color: var(--gold);
+    }
+    .stat-label {
+      font-size: .8rem; color: rgba(255,255,255,.5);
+      text-transform: uppercase; letter-spacing: .08em;
+      margin-top: 2px;
+    }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 100px 80px; }
+    .section-eyebrow {
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700; line-height: 1.2;
+      color: var(--navy); margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 1.05rem;
+      max-width: 560px; margin-bottom: 56px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+    .service-card {
+      background: var(--cream);
+      border: 1px solid var(--light);
+      border-radius: 6px; padding: 36px 32px;
+      transition: box-shadow .2s, transform .2s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .service-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.1); transform: translateY(-4px); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      width: 48px; height: 48px;
+      background: var(--navy); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; font-size: 1.4rem;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .service-card p { color: var(--muted); font-size: .9rem; line-height: 1.65; }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    #about .section-sub { margin-bottom: 0; }
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+    .value-row {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .value-dot {
+      width: 10px; height: 10px;
+      background: var(--gold); border-radius: 50%;
+      flex-shrink: 0; margin-top: 6px;
+    }
+    .value-row h4 { font-weight: 600; font-size: .95rem; color: var(--navy); margin-bottom: 4px; }
+    .value-row p { font-size: .875rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111C27;
+      color: rgba(255,255,255,.4);
+      text-align: center;
+      padding: 36px 80px;
+      font-size: .82rem;
+    }
+    footer strong { color: rgba(255,255,255,.7); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      section { padding: 72px 28px; }
+      .hero { padding: 120px 28px 72px; }
+      .hero::before { display: none; }
+      .hero-stats { gap: 28px; flex-wrap: wrap; }
+      #about { grid-template-columns: 1fr; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Cannon <span>&</span> Sons</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-badge">Residential Property Management</div>
+  <h1>Your home deserves<br /><em>expert care.</em></h1>
+  <p>Cannon &amp; Sons handles every aspect of apartment management — so residents enjoy a seamless living experience and owners enjoy peace of mind.</p>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Units Managed</div>
+    </div>
+    <div>
+      <div class="stat-num">24h</div>
+      <div class="stat-label">Response Time</div>
+    </div>
+    <div>
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Years of Service</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-eyebrow">What We Do</div>
+  <h2 class="section-title">Full-service management,<br />start to finish.</h2>
+  <p class="section-sub">From routine maintenance to lease administration, we cover everything your building needs to run smoothly.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <h3>Maintenance & Repairs</h3>
+      <p>Fast response to plumbing, electrical, HVAC, and general repairs. We coordinate qualified technicians so nothing stays broken for long.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>Lease Administration</h3>
+      <p>Lease renewals, move-in/out coordination, tenant screening, and documentation — handled professionally and on schedule.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💰</div>
+      <h3>Rent Collection</h3>
+      <p>Automated rent tracking, payment reminders, and transparent reporting so owners always know where things stand.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌿</div>
+      <h3>Common Area Upkeep</h3>
+      <p>Lobbies, hallways, laundry rooms, and outdoor spaces maintained to a consistent standard all year round.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔒</div>
+      <h3>Security & Access</h3>
+      <p>Key management, entry system support, and coordination with security vendors to keep residents safe.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Owner Reporting</h3>
+      <p>Monthly statements, expense breakdowns, and inspection reports delivered directly to property owners.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <div class="section-eyebrow">Who We Are</div>
+    <h2 class="section-title">A family business built on trust.</h2>
+    <p class="section-sub">For over 15 years, Cannon &amp; Sons has managed residential properties with the kind of attention that only comes from treating every building like it's your own. We're not a faceless corporation — we're a team that knows every hallway, every unit, and every tenant by name.</p>
+  </div>
+  <div class="about-values">
+    <div class="value-row">
+      <div class="value-dot"></div>
+      <div>
+        <h4>Reliability you can count on</h4>
+        <p>We show up, follow through, and keep our word — every time.</p>
+      </div>
+    </div>
+    <div class="value-row">
+      <div class="value-dot"></div>
+      <div>
+        <h4>Experienced in what matters</h4>
+        <p>From lease law to boiler rooms, our team has seen it all and handled it all.</p>
+      </div>
+    </div>
+    <div class="value-row">
+      <div class="value-dot"></div>
+      <div>
+        <h4>Owners and tenants, both</h4>
+        <p>We serve the people who invest in properties and the people who live in them equally well.</p>
+      </div>
+    </div>
+    <div class="value-row">
+      <div class="value-dot"></div>
+      <div>
+        <h4>Local, hands-on management</h4>
+        <p>No call centers. No outsourcing. Real people, on the ground, getting things done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Cannon &amp; Sons Property Management</strong> &nbsp;·&nbsp; cannonandsons.com</p>
+  <p style="margin-top:8px;">© 2026 Cannon & Sons. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
